@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<cprj schemaVersion="0.0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="CPRJ.xsd">
+
+  <created timestamp="2021-12-04T13:36:32" tool="uVision V5.34.0.0"/>
+
+  <info>
+    <name>RTX_Blinky</name>
+    <description/>
+  </info>
+
+  <packages>
+    <package name="CMSIS" vendor="ARM"/>
+    <package name="XMC1000_DFP" vendor="Infineon"/>
+  </packages>
+
+  <compilers>
+    <compiler name="AC6" version="6.0.0:6.99.99"/>
+  </compilers>
+
+  <target Ddsp="NO_DSP" Dendian="Little-endian" Dfpu="NO_FPU" Dmve="NO_MVE" Dname="XMC1404-Q064x0200" Dsecure="Non-secure" Dtz="NO_TZ" Dvendor="Infineon:7">
+    <output intdir="./Objects/" name="RTX_Blinky" outdir="./Objects/" type="exe"/>
+    <ldflags add="--callgraph --entry=Reset_Handler --info sizes --info summarysizes --info totals --info unused --info veneers --load_addr_map_info --map --strict --summary_stderr --symbols --xref" compiler="AC6" file="./RTE/Device/XMC1404-Q064x0200/XMC1400x0200_ac6.sct"/>
+    <cflags add="-Oz -Wno-documentation -Wno-documentation-unknown-command -Wno-license-management -Wno-missing-noreturn -Wno-missing-prototypes -Wno-missing-variable-declarations -Wno-nonportable-include-path -Wno-packed -Wno-parentheses-equality  -Wno-reserved-id-macro -Wno-sign-conversion -Wno-unused-macros -ffunction-sections -fno-rtti -fshort-enums -fshort-wchar -funsigned-char -gdwarf-3 -std=c99 -xc" compiler="AC6"/>
+    <asflags add="--xref -g" compiler="AC6" use="armasm"/>
+  </target>
+
+  <components>
+    <component Cclass="CMSIS" Cgroup="CORE" Cvendor="ARM"/>
+    <component Cclass="CMSIS" Cgroup="RTOS" Csub="Keil RTX" Cvendor="ARM">
+      <file attr="config" category="source" name="CMSIS/RTOS/RTX/Templates/RTX_Conf_CM.c" version="4.70.1"/>
+    </component>
+    <component Cclass="Device" Cgroup="Startup" Cvendor="Infineon">
+      <file attr="config" category="linkerScript" name="Device/XMC1400_series/Source/ARM/XMC1400x0200_ac6.sct" version="1.2.0"/>
+      <file attr="config" category="source" name="Device/XMC1400_series/Source/ARM/startup_XMC1400.s" version="1.3.0"/>
+      <file attr="config" category="source" name="Device/XMC1400_series/Source/system_XMC1400.c" version="1.9.0"/>
+    </component>
+    <component Cclass="Device" Cgroup="XMClib" Csub="GPIO" Cvendor="Infineon"/>
+  </components>
+
+  <files>
+    <group name="Source Files">
+      <file category="sourceC" name="./main.c"/>
+    </group>
+    <group name="Documentation">
+      <file category="doc" name="./Abstract.txt"/>
+    </group>
+  </files>
+
+</cprj>
